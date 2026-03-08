@@ -37,6 +37,16 @@ The primary challenge in integrating these datasets is the difference in reporti
 
 ## Timeline:
 
+| Phase | Task | Description | Deadline | Responsibility |
+| :--- | :--- | :--- | :--- | :--- |
+| **I. Acquisition** | API Infrastructure | Develop Python script using `fredapi` to pull RTWEXBGS and EXPGS. | March 15 | Member 1 |
+| **II. Integration** | Temporal Alignment | Resample weekly Index to quarterly averages and perform inner join. | March 20 | Member 1 |
+| **III. Quality** | Data Audit | Conduct formal Quality Assessment (Module 10) for nulls and outliers. | March 25 | Member 2 |
+| **IV. Reporting** | Interim Status | Draft 1000–1500 word status report (Milestone 3). | **March 31** | Both |
+| **V. Analysis** | Correlation Study | Calculate Pearson r coefficients and visualize the two-quarter lag. | April 15 | Member 1 |
+| **VI. Provenance** | Metadata | Create Data Dictionary and JSON metadata (Module 15). | April 25 | Member 2 |
+| **VII. Delivery** | Final Release | Final code review and create the `final-project` tag on GitHub. | **May 03** | Both |
+
 ## Constraints: 
 Despite the high quality of FRED data, our project faces several constraints:
 * Temporal Mismatch: The most significant technical challenge is the difference in reporting frequencies. While the Dollar Index is provided weekly, Real Export data is only available quarterly. This requires a downsampling strategy that could smooth out small spikes that could actually have significant short-term business impacts
