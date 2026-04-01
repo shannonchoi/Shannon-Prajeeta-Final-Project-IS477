@@ -33,7 +33,7 @@ Format: Time-series (Quarterly)
 * Access Method: Programmatic extraction via the FRED API
 
 ## Data Integration: 
-The primary challenge in integrating these datasets is the difference in reporting frequency. The Dollar Index is updated weekly, while Export data is updated quarterly. To resolve this, we’ll use a downsampling transformation in Python Pandas. We’ll calculate the mean value of the weekly Dollar Index for each quarter, creating a new "Quarterly Average" series. We’ll create a lagged version of the Export dataset by shifting it by two quarters to test our hypothesis that currency fluctuations have a delayed impact on trade volume.
+We will integrate based on the 'observation_date' column in both datasets. The primary challenge in integrating these datasets is the difference in reporting frequency. The Dollar Index is updated weekly, while Export data is updated quarterly. To resolve this, we’ll use a downsampling transformation in Python Pandas. We’ll calculate the mean value of the weekly Dollar Index for each quarter, creating a new "Quarterly Average" series. We’ll create a lagged version of the Export dataset by shifting it by two quarters to test our hypothesis that currency fluctuations have a delayed impact on trade volume.
 
 ## Timeline:
 
