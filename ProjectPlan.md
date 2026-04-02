@@ -24,16 +24,22 @@ We selected two primary datasets from Federal Reserve Economic Data (FRED). Thes
 * Source: The data is retrieved from FRED (Federal Reserve Economic Data), a premier database maintained by the Federal Reserve Bank of St. Louis. FRED aggregates data from dozens of national and international sources, providing a trustworthy, central repository for high-fidelity economic time-series data used globally by auditors, economists, and researchers. Originally though, the data was produced by the Board of Governors of the Federal Reserve System (US), which is the central bank of the United States, responsible for conducting monetary policy, supervising banking institutions, and maintaining the stability of the financial system.
 * Format: Time-series (Weekly)
 * Description: This index measures the foreign exchange value of the U.S. Dollar against a weighted average of the currencies of a broad group of major U.S. trading partners. It is "Real" because it is adjusted for inflation, making it the most accurate measure of purchasing power
+* Key Variables:
+date (observation_date): Timestamp of observation
+RTWEXBGS: Index value representing inflation-adjusted USD strength relative to major trading partners
 * Access Method: Programmatic extraction via the FRED API using the fredapi Python library
 
 2. Real Exports of Goods and Services (EXPGS): Real Exports of Goods and Services (EXPGS)
 * Source: This dataset is also retrieved from FRED (Federal Reserve Economic Data),  but is originally produced by the U.S. Bureau of Economic Analysis (BEA). The BEA is the primary federal agency responsible for calculating the Gross Domestic Product (GDP) and other National Income and Product Accounts (NIPA), ensuring the data meets rigorous federal standards for statistical accuracy and provenance.
 Format: Time-series (Quarterly)
+Key Variables:
+date (observation_date): Timestamp of observation
+EXPGS: Inflation-adjusted total exports (in billions of chained dollars)
 * Description: This represents the total inflation-adjusted value of all goods and services produced in the U.S. and sold to the rest of the world. It is a key component of GDP
 * Access Method: Programmatic extraction via the FRED API
 
 ## Data Integration: 
-We will integrate based on the 'observation_date' column in both datasets. The primary challenge in integrating these datasets is the difference in reporting frequency. The Dollar Index is updated weekly, while Export data is updated quarterly. To resolve this, we’ll use a downsampling transformation in Python Pandas. We’ll calculate the mean value of the weekly Dollar Index for each quarter, creating a new "Quarterly Average" series. We’ll create a lagged version of the Export dataset by shifting it by two quarters to test our hypothesis that currency fluctuations have a delayed impact on trade volume.
+The common feature between the two datasets is time, specifically the observation_date variable. This shared temporal dimension enables integration. We will integrate based on the 'observation_date' column in both datasets. The primary challenge in integrating these datasets is the difference in reporting frequency. The Dollar Index is updated weekly, while Export data is updated quarterly. To resolve this, we’ll use a downsampling transformation in Python Pandas. We’ll calculate the mean value of the weekly Dollar Index for each quarter, creating a new "Quarterly Average" series. We’ll create a lagged version of the Export dataset by shifting it by two quarters to test our hypothesis that currency fluctuations have a delayed impact on trade volume.
 
 ## Timeline:
 
@@ -53,9 +59,14 @@ Despite the high quality of FRED data, our project faces several constraints:
 * Data Latency: Economic indicators like "Real Exports" are subject to time lags in reporting. The most recent data points may be subject to future revisions by the Bureau of Economic Analysis (BEA), which could impact our post-2020 analysis
 * Aggregation Bias: Because we are using national-level data, we can’t account for how different industries react to currency shifts. Some sectors may be more resilient due to global demand, but our dataset treats all exports as a single "Real Exports"
 * Legal Constraints: While the data is public domain, we must ensure our scripts include proper API Rate Limiting to avoid overwhelming FRED’s servers, which is a key ethical consideration in automated data collection
+* Ethical/API Constraints (Data Acquisition):
+API rate limits must be respected when using fredapi, aligning with course discussions on ethical data sourcing and system constraints.
 
 ## Gaps:
 We have identified the following gaps where further refinement or external input may be required as the project evolves:
 * Confounding Variables: Our current model only looks at the USD strength. However, global exports are also affected by foreign GDP growth, trade tariffs, and shipping costs. We currently have a gap in accounting for these "confounding variables," which might explain drops in exports better than USD strength alone.
+* Non-Stationarity (Time-Series Issue):
+Both RTWEXBGS and EXPGS are time-series data that may exhibit trends over time. Without transformation (e.g., first differencing or percentage change), correlation results may be misleading. This relates to time-series analysis concepts covered in class.
 * Statistical Methodology: As we move into the analysis phase, we need to determine the most robust way to handle non-stationary time-series data. We may need additional input on whether to use "First-Difference" (calculating the change from the previous quarter) or "Percentage Change" to ensure our correlation results aren't just showing two lines that both happen to trend upward over time.
-* Course Content Gap: We currently have a gap in our details for Module 10 and onward topics, but we anticipate to fill in the gaps as we learn. Especially for related the later modules, we need to research tools like r specific Python workflow managers to ensure our end-to-end process is fully automated and reproducible for the final submission.
+* Course Content Gap: We currently have a gap in our details for Module 10 and onward topics, but we anticipate to fill in the gaps
+* Feature Limitation (Dataset Scope): Both datasets contain only a single primary measurement variable (index value and export value). The lack of additional explanatory variables limits the complexity of modeling and restricts analysis to bivariate relationships. Especially for related the later modules, we need to research tools like r specific Python workflow managers to ensure our end-to-end process is fully automated and reproducible for the final submission.
