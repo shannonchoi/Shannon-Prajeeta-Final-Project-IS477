@@ -96,3 +96,30 @@ Both indicate weak positive relationships, with a modest increase after 2020. Th
 | Final       | Full analysis and report         | Not Started   | May 3             |
 
 ---
+
+## Changes to Project Plan
+As we engaged deeply with the data and incorporated feedback from Milestone 2, we identified several necessary changes to our project plan regarding our methodology, technical constraints, and data definitions.
+
+1. Variable Definition Refinement: To improve clarity about the datasets, we added explicit definitions for our key variables in each dataset to the plan:
+
+Variables(columns) of the ‘Real Trade Weighted U.S. Dollar Index’(RTWEXBGS) Dataset:
+- date (observation_date): Timestamp of observation. (weekly)
+- RTWEXBGS: Index value representing inflation-adjusted USD strength relative to major trading partners.
+
+Variables(columns) of the ‘Real Exports of Goods and Services’ (EXPGS) Dataset:
+- date (observation_date): Timestamp of observation. (quarterly)
+- EXPGS: Inflation-adjusted total exports (in billions of chained dollars).
+
+2. Integration Methodology Update: We refined our explanation of how and on what column the datasets will be merged.
+- Deleted: "We will integrate based on the 'observation_date' column in both datasets. The primary challenge in integrating these datasets is the difference in reporting frequency. The Dollar Index is updated weekly, while Export data is updated quarterly..." 
+- Added: "The common feature between the two datasets is time, specifically the observation_date variable. This shared temporal dimension enables integration. We will integrate based on the 'observation_date' column in both datasets. The primary challenge in integrating these datasets is the difference in reporting frequency. The Dollar Index is updated weekly, while Export data is updated quarterly. To resolve this, we’ll use a downsampling transformation in Python Pandas. We’ll calculate the mean value of the weekly Dollar Index for each quarter, creating a new "Quarterly Average" series. We’ll create a lagged version of the Export dataset by shifting it by two quarters to test our hypothesis that currency fluctuations have a delayed impact on trade volume."
+
+3. Addressing Analytical and Scope Limitations: We realized that raw time-series data presents statistical challenges and that our scope is very limited by the few variables available. We updated our "Gaps" section accordingly:
+- Added: "Both RTWEXBGS and EXPGS are time-series data that may exhibit trends over time. Without transformation (e.g., first differencing or percentage change), correlation results may be misleading. This relates to time-series analysis concepts covered in class."
+- Deleted: Our previous, vaguer statement regarding Course Content Gaps and Python workflow managers.
+- Added: "Feature Limitation (Dataset Scope): Both datasets contain only a single primary measurement variable (index value and export value). The lack of additional explanatory variables limits the complexity of modeling and restricts analysis to bivariate relationships. Especially for related the later modules, we need to research tools like specific Python workflow managers to ensure our end-to-end process is fully automated and reproducible for the final submission."
+
+## Challenges and Resolutions
+Some of the challenges that we faced when working with our datasets are temporal misalignment, lag direction confusion, non-stationarity, and weak and inconsistent results. For temporal misalignment, the issue was that our merge procured an empty dataset due to Quarter-end vs. quarter-start timestamps, with our solution being that we converted both datasets to PeriodIndex (quarterly). For lag direction confusion, the issue was that our initial lag implementation produced NaN results and our solution was a corrected lag structure and verified alignment through debugging and inspection of intermediate outputs. For non-stationarity, the issue was raw time-series correlation risked spurious results and our solution was that we applied percentage change transformations before analysis. For weak and inconsistent results, the issue was that initial lag-2 correlation did not support our hypothesis and the solution was that we expanded our analysis to include multiple lags and time-period comparisons. 
+
+## Summary of Individual Contributions
