@@ -54,7 +54,6 @@ We first examined the contemporaneous relationship between the dollar index and 
 - **Correlation (no lag): r ≈ 0.22**
 
 This indicates a weak positive relationship, which does not align with the initial hypothesis that a stronger dollar reduces exports. The weak magnitude suggests that exchange rate movements alone are not strong predictors of export performance.
-
 ---
 
 ### Lag Analysis Results
