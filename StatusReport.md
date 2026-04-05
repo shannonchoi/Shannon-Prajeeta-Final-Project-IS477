@@ -126,3 +126,5 @@ Some of the challenges that we faced when working with our datasets are temporal
 Prajeeta Dahal: 
 I implemented the FRED API data acquisition scripts to retrieve the required datasets and performed data integration, including resampling the weekly dollar index into quarterly averages for alignment with export data. I conducted the correlation and lag analysis to evaluate the relationship between USD strength and exports under different model specifications. Additionally, I developed a reproducible workflow in Google Colab to ensure the analysis can be easily rerun and verified. I also contributed to documentation and report writing, and assisted in interpreting results and refining the overall analytical approach.
 
+Shannon Choi:
+I conducted a data quality assessment and identified missing values and inconsistencies during the cleaning process. Additionally, I debugged merge and lag alignment issues and developed a reproducible workflow in Google Colab. Finally, I also contributed to the documentation and report writing, while assisting in interpreting the results and refining our analysis.
