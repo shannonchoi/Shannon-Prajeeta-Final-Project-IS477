@@ -81,3 +81,14 @@ https://github.com/shannonchoi/Shannon-Prajeeta-Final-Project-IS477/blob/46fb570
 The EXPGS dataset is produced by a U.S. federal government agency and is in the public domain. No redistribution restrictions apply. The same API rate-limiting considerations apply as noted above.
 
 ---
+## Dataset Integration and Relationship to Research Questions
+
+Both datasets share a common temporal dimension, the observation_date, which serves as the integration key. The datasets are complementary by design: RTWEXBGS captures the independent variable (USD strength), and EXPGS captures the dependent variable (U.S. export volume). Together they allow us to test the theoretical Exchange Rate Pass-Through mechanism.
+
+The primary integration challenge is the difference in reporting frequency (monthly vs. quarterly). We address this through downsampling: the monthly Dollar Index is aggregated to quarterly averages, giving each quarter a single representative USD index value that can be aligned with the corresponding export figure. After downsampling and temporal alignment, the merged dataset covers the period from 2026 Q1 through 2025 Q4, yielding approximately 80 rows of quarterly observations after dropping rows with missing values created by the lag transformation.
+
+### Relationship to Research Questions
+
+The primary research question (does USD appreciation correlate with a decline in exports two quarters later?) is directly addressed by computing the Pearson correlation between quarterly percentage changes in RTWEXBGS and lagged quarterly percentage changes in EXPGS.
+
+The secondary question (has this relationship shifted post-2020?) is addressed by splitting the merged dataset at 2020Q1 and computing correlations within each sub-period.
