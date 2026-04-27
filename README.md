@@ -272,4 +272,70 @@ An important challenge was recognizing that correlating the raw (level) values o
 The biggest challenge was accepting results that contradicted our initial hypothesis. The absence of a strong two-quarter-lag negative correlation forced us to evaluate the limitations of bivariate analysis in macroeconomics. Rather than treating this as a failure, we framed it as a finding: the exchange rate pass-through mechanism at the aggregate national level is not as cleanly observable as theoretical models suggest, and confounding variables play a substantial role.
 
 ---
+## Reproducing
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/shannonchoi/Shannon-Prajeeta-Final-Project-IS477.git
+cd Shannon-Prajeeta-Final-Project-IS477
+```
+
+### Step 2: Install Dependencies
+
+```bash
+pip install fredapi pandas matplotlib
+pip install -r requirements.txt
+```
+
+### Step 3: Set Your FRED API Key
+
+In the notebook (`IS477_Project_Code.ipynb`), locate the line:
+
+```python
+fred = Fred(api_key='YOUR_API_KEY_HERE')
+```
+
+Replace `'YOUR_API_KEY_HERE'` with your personal FRED API key.
+
+### Step 4: Run the Notebook
+
+Open `IS477_Project_Code-2.py` in Google Colab or Jupyter and run all cells in order. We uploaded the intended output in `IS477_Final_Project_Code.ipynb` for reference. The notebook is structured sequentially:
+
+1. Install fredapi
+2. Import libraries
+3. Connect to FRED API
+4. Acquire RTWEXBGS (monthly) and EXPGS (quarterly)
+5. Resample RTWEXBGS to quarterly averages and convert both to PeriodIndex
+6. Create lag variable (2-quarter lag on EXPGS) and perform inner join merge
+7. Compute percentage changes for both variables
+8. Drop missing values
+9. Compute and print baseline Pearson correlation (lag 2)
+10. Generate scatter plot (USD % Change vs. Lagged Exports % Change)
+11. Split into pre-2020 / post-2020 subsets and compute sub-period correlations
+12. Loop through lags 0–4, compute and print Pearson r for each
+
+Alternatively, the raw data files (`RTWEXBGS.csv` and `EXPGS.csv`) are included in this repository and can be loaded directly without an API key if you modify the acquisition cells accordingly.
+
+### Expected Outputs
+
+- Printed correlation coefficient for lag-2 specification
+- Scatter plot: USD % Change (x) vs. Exports % Change – Lagged 2Q (y)
+- Printed pre-2020 and post-2020 correlation values
+- Printed Pearson r values for lags 0 through 4
+
+> **Note on Data Recency:** Because data is fetched live from the FRED API at runtime, results may differ marginally from those reported here if the BEA has revised recent EXPGS estimates since this report was written. The historical relationships (pre-2020) should be stable.
+
+---
+
+## References
+
+1. Board of Governors of the Federal Reserve System (US). *Real Trade Weighted U.S. Dollar Index: Broad, Goods and Services* [RTWEXBGS]. Federal Reserve Bank of St. Louis, FRED Economic Data. https://fred.stlouisfed.org/series/RTWEXBGS
+2. U.S. Bureau of Economic Analysis. *Real Exports of Goods and Services* [EXPGS]. Federal Reserve Bank of St. Louis, FRED Economic Data. https://fred.stlouisfed.org/series/EXPGS
+3. McKinney, Wes. *Data Structures for Statistical Computing in Python.* Proceedings of the 9th Python in Science Conference, 2010. (pandas library)
+4. Hunter, J.D. *Matplotlib: A 2D Graphics Environment.* Computing in Science & Engineering, Vol. 9, No. 3, pp. 90–95, 2007.
+5. Federal Reserve Bank of St. Louis. *FRED API Documentation.* https://fred.stlouisfed.org/docs/api/fred/
+6. Goldberg, L.S., & Knetter, M.M. *Goods Prices and Exchange Rates: What Have We Learned?* Journal of Economic Literature, 35(3), 1243–1272, 1997.
+7. Campa, J.M., & Goldberg, L.S. *Exchange Rate Pass-Through into Import Prices.* The Review of Economics and Statistics, 87(4), 679–690, 2005.
+8. fredapi Python library: https://github.com/mortada/fredapi
 
