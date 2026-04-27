@@ -223,3 +223,32 @@ Both sub-periods show weak positive correlations, meaning that the moderate nega
 A scatter plot of USD quarterly percentage change (x-axis) versus two-quarter-lagged export percentage change (y-axis) was produced and confirmed the absence of a strong linear relationship at lag 2, consistent with the near-zero correlation at that lag.
 
 ---
+## Future Work
+
+### Addressing Confounding Variables
+
+The most important limitation of this project is that it has a bivariate scope of the data, meaning it only focuses on two variables. The reality is that the real-world relationship between currency strength and export performance is embedded in a complex web of macroeconomic conditions that our model doesn't capture. Future work should incorporate additional explanatory variables such as foreign GDP growth rates for major trading partners (a stronger partner economy can offset the price disadvantage of a strong dollar), global commodity prices (especially for agricultural and energy exports, which are priced in dollars regardless of currency fluctuations), U.S. tariff policy and retaliatory foreign tariffs, shipping and logistics costs, and global demand indices.
+
+An addition would be to build a multivariate regression model that treats exports and currency strength as jointly determined variables in a system, rather than assuming its one-way causal relationship.
+
+### Sector Disaggregation
+
+Our analysis treats all U.S. exports as a single aggregate figure, but different sectors of the economy respond to currency movements in different ways. Aircraft manufacturers, agricultural commodity exporters, and technology service exporters face very different competitive dynamics. Future work could use sector-level BEA export data to test whether the Exchange Rate Pass-Through effect is stronger in goods-intensive sectors (where price competition is direct) than in high-value-added services (where U.S. competitive advantages may insulate exporters from currency effects).
+
+### Improved Time-Series Methodology
+
+Our use of percentage-change transformations was a reasonable first step, but a more rigorous approach would involve formal unit root tests to confirm stationarity, followed by causality tests to assess statistical evidence for causal directionality. Dynamic correlation analysis could also reveal how the relationship evolves over time more precisely than the simple pre/post-2020 split.
+
+### Expanding the Post-2020 Window
+
+Our post-2020 analysis was limited by a small number of post-pandemic quarters available at the time of analysis (approximately 16 quarters). As more data accumulates, the structural shift hypothesis can be tested with greater statistical power.
+
+### Workflow and Reproducibility Improvements
+
+While our project is reproducible via a documented Colab notebook and FRED API, future iterations could benefit from a more formal workflow management system such as Snakemake, which would enable strict dependency tracking between pipeline stages (acquisition to integration to cleaning to analysis to visualization). This would make the pipeline easier to audit and extend.
+
+### Metadata and FAIR Compliance
+
+A future version would benefit from a formal machine-readable metadata record (Schema.org or DataCite format) and a persistent DOI to make the project fully citable as a research artifact.
+
+---
