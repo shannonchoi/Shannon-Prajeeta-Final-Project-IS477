@@ -129,3 +129,59 @@ After merging the two datasets, we performed an additional quality check on the 
 - **Non-stationarity check:** Visual inspection of the raw RTWEXBGS and EXPGS time series confirmed the presence of long-run trends in both variables, confirming the need for percentage-change transformation before correlation analysis.
 
 ---
+## Data Cleaning
+
+### Overview
+
+Because both datasets were sourced from high-quality, institutionally maintained repositories, the cleaning requirements were relatively modest but also important for ensuring the validity of our statistical analysis. The following cleaning steps were applied.
+
+---
+
+### Step 1: Temporal Index Standardization
+
+**Issue:** After retrieving the datasets from the FRED API, the two DataFrames used different timestamp conventions. The Dollar Index used monthly timestamps (first day of each month), while the Export data used quarter-end timestamps. When we first attempted a direct merge on the date index, the result was an empty DataFrame with no timestamps matched exactly because one set ended on quarter-end dates and the other on monthly dates.
+
+**Operation:** We converted both DataFrames to a standardized quarterly PeriodIndex using Pandas' `.to_period('Q')` method. For the Dollar Index, this was applied after downsampling to quarterly averages; for the Export data, it was applied directly. A PeriodIndex represents a quarter as a period (e.g., 2020Q1) rather than a specific timestamp, making it a better format and enabling a clean merge.
+
+**Justification:** This is the best solution for merging time series of different frequencies because it takes away the specific timestamp anchor and works with the calendar period.
+
+---
+
+### Step 2: Downsampling from Monthly to Quarterly
+
+**Issue:** RTWEXBGS is reported monthly, while EXPGS is reported quarterly. Analysis requires observations at the same temporal resolution.
+
+**Operation:** We applied `.resample('Q').mean()` to the monthly Dollar Index DataFrame, computing the mean index value across all months falling within each calendar quarter. This produced a single quarterly representative value for the Dollar Index.
+
+**Justification:** Using the mean (vs the quarter-end or quarter-start value) is appropriate because it represents the average currency conditions experienced throughout the quarter, which is more relevant to how exporters actually experience exchange rate fluctuations than a single snapshot at the quarter's end.
+
+---
+
+### Step 3: Lag Variable Construction
+
+**Issue:** Our research hypothesis represents a delayed effect, meaning that we theorized the changes in the Dollar Index to impact exports with a lag of one to two quarters, as it takes time for exchange rate movements to flow through to actual trade volumes.
+
+**Operation:** We created lagged versions of the EXPGS series using Pandas' `.shift(n)` method for lag values of 0 through 4 quarters. Each lagged variable was added as a new column before analysis.
+
+**Justification:** Lag construction is a standard technique in macroeconomic time-series analysis for testing hypotheses about delayed transmission mechanisms.
+
+---
+
+### Step 4: Percentage Change Transformation
+
+**Issue:** Both the RTWEXBGS and EXPGS series exhibit strong upward long-run trends. Computing Pearson correlations on the raw values of these trending series would produce high correlations driven by the shared upward trend rather than any genuine quarter-to-quarter relationship. This is the classic "spurious regression" problem in time-series econometrics.
+
+**Operation:** We transformed both variables into quarter-over-quarter percentage changes using Pandas' `.pct_change()` method before computing any correlations.
+
+**Justification:** Percentage change is the standard transformation for removing non-stationarity from macroeconomic time series because it converts level variables into growth-rate variables. This ensures that correlations reflect true contemporaneous or lagged co-movement between the variables, not just the shared trend.
+
+---
+
+### Step 5: Missing Value Removal
+
+**Issue:** The lag and percentage change transformations introduce NaN values at the beginning of the time series (the first observation after shifting has no prior value to compute a change or lag from).
+
+**Operation:** We called `.dropna()` on the merged DataFrame after all transformations were applied, removing rows with any missing values.
+
+**Justification:** Pearson correlation cannot be computed on rows with NaN values. Removing these rows at the end of the transformation pipeline rather than at each intermediate step is efficient and ensures no valid observations are lost.
+
