@@ -252,3 +252,24 @@ While our project is reproducible via a documented Colab notebook and FRED API, 
 A future version would benefit from a formal machine-readable metadata record (Schema.org or DataCite format) and a persistent DOI to make the project fully citable as a research artifact.
 
 ---
+
+## Challenges
+
+### Temporal Misalignment and Empty Merge
+
+The most significant technical challenge was the initial failure of the dataset merge. When we first attempted to join RTWEXBGS and EXPGS on their date indices after retrieving them from the FRED API, the resulting DataFrame was empty. The root cause was a mismatch in timestamp formats: the dollar index used monthly timestamps while the export data used quarter-end timestamps. Despite representing the same calendar quarters, these timestamps did not match exactly. The solution was converting both series to a PeriodIndex with quarterly granularity.
+
+### Lag Direction and NaN Propagation
+
+Our initial lag implementation produced unexpected NaN values across the entire DataFrame rather than only at the first few rows. After debugging, we identified that the lag was being applied before the temporal alignment step, which interacted poorly with the PeriodIndex conversion. Re-ordering the operations by first aligning and merging, then applying the lag solved the issue.
+
+### Non-Stationarity and Spurious Correlation
+
+An important challenge was recognizing that correlating the raw (level) values of RTWEXBGS and EXPGS would produce meaningless results. Both series trend upward over time, so any correlation between them in levels would be spurious. Understanding and correctly applying the percentage-change transformation required us to engage with macroeconomic time-series concepts that were initially outside our comfort zone.
+
+### Weak and Counterintuitive Results
+
+The biggest challenge was accepting results that contradicted our initial hypothesis. The absence of a strong two-quarter-lag negative correlation forced us to evaluate the limitations of bivariate analysis in macroeconomics. Rather than treating this as a failure, we framed it as a finding: the exchange rate pass-through mechanism at the aggregate national level is not as cleanly observable as theoretical models suggest, and confounding variables play a substantial role.
+
+---
+
