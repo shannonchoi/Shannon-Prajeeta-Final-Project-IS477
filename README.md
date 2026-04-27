@@ -92,3 +92,40 @@ The primary integration challenge is the difference in reporting frequency (mont
 The primary research question (does USD appreciation correlate with a decline in exports two quarters later?) is directly addressed by computing the Pearson correlation between quarterly percentage changes in RTWEXBGS and lagged quarterly percentage changes in EXPGS.
 
 The secondary question (has this relationship shifted post-2020?) is addressed by splitting the merged dataset at 2020Q1 and computing correlations within each sub-period.
+
+# Data Quality
+
+## Quality Assessment Overview
+
+We conducted a systematic data quality assessment of both datasets following acquisition from the FRED API. Our assessment focused on four dimensions: completeness, consistency, accuracy, and timeliness.
+
+### RTWEXBGS Quality Assessment
+
+**Completeness:** After retrieving the full RTWEXBGS series programmatically, we inspected the resulting Pandas DataFrame for missing values (NaN). There were none.
+
+**Consistency:** The series is internally consistent. The index is computed using a fixed methodology maintained by the Federal Reserve Board, and no structural breaks in the data-collection methodology are documented.
+
+**Accuracy:** As a product of the U.S. Federal Reserve, the data meets rigorous institutional accuracy standards. No outliers were identified during quality assessment that could not be attributed to known macroeconomic events. These movements are genuine economic signals, not data errors.
+
+**Timeliness:** The series is updated monthly with minimal lag (typically within a few days of the reference month). The most recent values are considered preliminary until confirmed in subsequent releases, but historical values are stable.
+
+### EXPGS Quality Assessment
+
+**Completeness:** The EXPGS series contained no missing quarterly observations across the full historical range. All expected quarters from 1947 Q1 through the most recent available period were present.
+
+**Consistency:** The BEA periodically revises EXPGS estimates, sometimes substantially, as more complete source data becomes available. This means that the most recent 2–4 quarterly observations are subject to revision. For our analysis, which emphasizes historical relationships and does not rely on the most recent data point in isolation, this poses minimal risk.
+
+**Accuracy:** The BEA is the authoritative source for national accounts data in the United States. The EXPGS figures are considered the gold standard for measuring U.S. export activity. No data accuracy issues were identified.
+
+**Timeliness:** Quarterly data is typically released approximately one month after the reference quarter's end, with subsequent revisions over the following year. Our analysis uses the one available at the time of data acquisition.
+
+### Post-Integration Quality Assessment
+
+After merging the two datasets, we performed an additional quality check on the merged DataFrame:
+
+- **Shape verification:** We confirmed the merged DataFrame had the expected number of rows (80 quarterly observations).
+- **No spurious NaNs introduced by the merge:** The inner join on the period index ensured that only time periods present in both datasets were retained, eliminating any mismatch-induced missing values.
+- **Lag-induced NaN handling:** The creation of lagged export variables (`shift()`) introduces NaN values at the beginning of the time series. These rows were explicitly dropped using `dropna()` before computing any correlations. (cleaned df has 79 rows)
+- **Non-stationarity check:** Visual inspection of the raw RTWEXBGS and EXPGS time series confirmed the presence of long-run trends in both variables, confirming the need for percentage-change transformation before correlation analysis.
+
+---
