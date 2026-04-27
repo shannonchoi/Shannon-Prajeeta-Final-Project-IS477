@@ -185,3 +185,41 @@ Because both datasets were sourced from high-quality, institutionally maintained
 
 **Justification:** Pearson correlation cannot be computed on rows with NaN values. Removing these rows at the end of the transformation pipeline rather than at each intermediate step is efficient and ensures no valid observations are lost.
 
+---
+
+## Findings
+
+### Baseline Correlation (No Lag)
+
+We first examined the contemporaneous (no lag) relationship between quarterly percentage changes in USD strength and quarterly percentage changes in export value. The Pearson correlation was r ≈ 0.22, indicating a weak positive relationship. This result counters our initial hypothesis that if USD appreciation directly suppresses exports, we would expect a negative correlation. The weakness in this baseline correlation suggests that the Dollar Index alone is not a strong contemporaneous predictor of export performance.
+
+### Lag Analysis
+
+To investigate whether the relationship operates with a delay, we computed correlations between USD percentage change and lagged export percentage change for lags of 0 through 4 quarters. The results were as follows:
+
+| Lag (Quarters) | Pearson r |
+|----------------|-----------|
+| 0              | −0.47     |
+| 1              | 0.05      |
+| 2              | 0.24      |
+| 3              | 0.19      |
+| 4              | 0.03      |
+
+The strongest result was at lag 0 (r ≈ −0.47): a moderate negative correlation, indicating that quarters in which the USD appreciates tend to be the same quarters in which export growth slows or turns negative. This is consistent with the Exchange Rate Pass-Through theory operating within the same quarter, maybe even reflecting that some export contracts are priced in real time and that large changes in currency value have an immediate impact on demand.
+
+Correlations at lags 1 through 4 were weak and inconsistent (near zero or positive), contradicting our initial two-quarter-lag hypothesis. This suggests that the delayed impact of USD strength on exports is not a stable or reliable empirical pattern at the aggregate national level over this time period, or at least when measured in percentage-change terms.
+
+### Pre- and Post-2020 Analysis
+
+To evaluate whether pandemic-era structural shifts altered the relationship, we split the sample at 2020 Q1:
+
+- **Pre-2020 correlation** (percentage changes, no lag): r ≈ 0.18 — weak positive
+- **Post-2020 correlation** (percentage changes, no lag): r ≈ 0.32 — weak positive
+
+Both sub-periods show weak positive correlations, meaning that the moderate negative relationship observed at lag 0 in the full sample is not stable across time periods when examined this way. The modest increase in positive correlation post-2020 is consistent with the idea that during and after the pandemic, export volumes were driven more by extraordinary demand and supply-chain factors than by currency conditions. A dollar that was strong coincided with strong U.S. economic performance that also attracted export demand, which may explain the positive weak association.
+
+### Visualization
+
+A scatter plot of USD quarterly percentage change (x-axis) versus two-quarter-lagged export percentage change (y-axis) was produced and confirmed the absence of a strong linear relationship at lag 2, consistent with the near-zero correlation at that lag.
+
+---
