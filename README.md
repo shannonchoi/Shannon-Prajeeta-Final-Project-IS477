@@ -289,13 +289,13 @@ pip install -r requirements.txt
 
 ### Step 3: Set Your FRED API Key
 
-In the notebook (`IS477_Project_Code.ipynb`), locate the line:
+In the file (`IS477_Project_Code-2.py`), locate the line:
 
 ```python
 fred = Fred(api_key='YOUR_API_KEY_HERE')
 ```
 
-Replace `'YOUR_API_KEY_HERE'` with your personal FRED API key.
+Make sure to replace `'YOUR_API_KEY_HERE'` with your personal FRED API key after opening the notebook and before running the cell.
 
 ### Step 4: Run the Notebook
 
