@@ -22,6 +22,10 @@ We used lag structures to better understand whether the relationship between cur
 
 We found that the strongest negative correlation between USD change and export change appeared at lag 0 (r ≈ −0.47), indicating that USD appreciation and export decline do tend to occur in the same quarter rather than with a two-quarter delay. Correlations at longer lags were weak and inconsistent. When we split the sample into pre- and post-2020 periods, both sub-periods showed weak positive correlations (0.18 and 0.32, respectively), suggesting that structural economic shifts following the COVID-19 pandemic may have altered the traditional exchange-rate–trade relationship. The absence of a strong, persistent negative relationship challenges the convention that USD strength is a reliable leading indicator of export decline, and points toward the importance of other omitted confounding variables such as foreign GDP growth, trade tariffs, and global shipping costs.
 
+## Contributions
+
+
+
 ---
 
 ## Data Profile
