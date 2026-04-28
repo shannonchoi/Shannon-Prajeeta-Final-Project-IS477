@@ -22,8 +22,11 @@ We used lag structures to better understand whether the relationship between cur
 
 We found that the strongest negative correlation between USD change and export change appeared at lag 0 (r ≈ −0.47), indicating that USD appreciation and export decline do tend to occur in the same quarter rather than with a two-quarter delay. Correlations at longer lags were weak and inconsistent. When we split the sample into pre- and post-2020 periods, both sub-periods showed weak positive correlations (0.18 and 0.32, respectively), suggesting that structural economic shifts following the COVID-19 pandemic may have altered the traditional exchange-rate–trade relationship. The absence of a strong, persistent negative relationship challenges the convention that USD strength is a reliable leading indicator of export decline, and points toward the importance of other omitted confounding variables such as foreign GDP growth, trade tariffs, and global shipping costs.
 
-## Contributions
+## Summary of Individual Contributions
 
+Prajeeta Dahal: I implemented the FRED API data acquisition scripts to retrieve the required datasets and performed data integration, including resampling the weekly dollar index into quarterly averages for alignment with export data. I conducted the correlation and lag analysis to evaluate the relationship between USD strength and exports under different model specifications. Additionally, I developed a reproducible workflow in Google Colab to ensure the analysis can be easily rerun and verified. I also contributed to documentation and report writing, and assisted in interpreting results and refining the overall analytical approach. I also developed and uploaded the profile quality, data dictionary, LISCENSE, uploaded the READMEmd file, and created the final project release tag. In the README.Md file, I helped write and summarize the sections on findings, challenges, future work, visualizations, reproducing steps, and the citations. 
+
+Shannon Choi: I conducted a data quality assessment and identified missing values and inconsistencies during the cleaning process. Additionally, I debugged merge and lag alignment issues and developed a reproducible workflow in Google Colab. Finally, I also contributed to the documentation and report writing, while assisting in interpreting the results and refining our analysis.
 
 
 ---
