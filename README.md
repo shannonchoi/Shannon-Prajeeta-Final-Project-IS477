@@ -284,7 +284,6 @@ cd Shannon-Prajeeta-Final-Project-IS477
 ### Step 2: Install Dependencies
 
 ```bash
-pip install fredapi pandas matplotlib
 pip install -r requirements.txt
 ```
 
