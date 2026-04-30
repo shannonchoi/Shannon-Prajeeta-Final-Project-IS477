@@ -1,70 +1,30 @@
 {
-  "@context": "https://schema.org/",
-  "@type": "Dataset",
-  "name": "Dollar Dynamics: USD Strength and U.S. Export Competitiveness",
-  "description": "An analysis of the relationship between the Real Trade Weighted U.S. Dollar Index (RTWEXBGS) and Real Exports of Goods and Services (EXPGS) using quarterly data from FRED. The project tests whether USD appreciation correlates with a decline in exports, with a focus on lag structures and pre/post-2020 structural shifts.",
-  "url": "https://github.com/shannonchoi/Shannon-Prajeeta-Final-Project-IS477",
-  "keywords": [
-    "exchange rate",
-    "U.S. exports",
-    "USD",
-    "macroeconomics",
-    "time-series analysis",
-    "FRED",
-    "exchange rate pass-through",
-    "trade"
-  ],
-  "creator": [
-    {
-      "@type": "Person",
-      "name": "Prajeeta Dahal"
+    "@type": "dcat:Dataset",
+    "accessLevel": "public",
+    "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Shannon Choi & Prajeeta Dahal",
+        "hasEmail": "mailto:sc145@illinois.edu"
     },
-    {
-      "@type": "Person",
-      "name": "Shannon Choi"
-    }
-  ],
-  "license": "https://opensource.org/licenses/MIT",
-  "datePublished": "2026-05-03",
-  "temporalCoverage": "1973/2024",
-  "variableMeasured": [
-    {
-      "@type": "PropertyValue",
-      "name": "RTWEXBGS",
-      "description": "Real Trade Weighted U.S. Dollar Index: Broad, Goods and Services. Monthly index value measuring inflation-adjusted USD strength against major trading-partner currencies.",
-      "unitText": "Index (base: January 2006)"
+    "description": "An analysis of the relationship between the Real Trade Weighted U.S. Dollar Index (RTWEXBGS) and Real Exports of Goods and Services (EXPGS) using quarterly data from FRED. The project tests whether USD appreciation correlates with a decline in exports, with a focus on lag structures and pre/post-2020 structural shifts.",
+    "identifier": "https://github.com/shannonchoi/Shannon-Prajeeta-Final-Project-IS477",
+    "issued": "2026-05-03",
+    "keyword": [
+        "exchange rate",
+        "U.S. exports",
+        "USD",
+        "macroeconomics",
+        "time-series analysis",
+        "FRED",
+        "exchange rate pass-through",
+        "trade"
+    ],
+    "landingPage": "https://github.com/shannonchoi/Shannon-Prajeeta-Final-Project-IS477",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "modified": "2026-04-30",
+    "publisher": {
+        "@type": "org:Organization",
+        "name": "Shannon Choi & Prajeeta Dahal"
     },
-    {
-      "@type": "PropertyValue",
-      "name": "EXPGS",
-      "description": "Real Exports of Goods and Services. Quarterly total inflation-adjusted value of U.S. exports.",
-      "unitText": "Billions of chained 2017 U.S. dollars"
-    }
-  ],
-  "isBasedOn": [
-    {
-      "@type": "Dataset",
-      "name": "Real Trade Weighted U.S. Dollar Index: Broad, Goods and Services (RTWEXBGS)",
-      "url": "https://fred.stlouisfed.org/series/RTWEXBGS",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Board of Governors of the Federal Reserve System (US) via FRED"
-      }
-    },
-    {
-      "@type": "Dataset",
-      "name": "Real Exports of Goods and Services (EXPGS)",
-      "url": "https://fred.stlouisfed.org/series/EXPGS",
-      "publisher": {
-        "@type": "Organization",
-        "name": "U.S. Bureau of Economic Analysis (BEA) via FRED"
-      }
-    }
-  ],
-  "programmingLanguage": "Python 3",
-  "softwareRequirements": [
-    "fredapi==0.5.1",
-    "pandas==2.2.2",
-    "matplotlib==3.9.0"
-  ]
+    "title": "Dollar Dynamics: USD Strength and U.S. Export Competitiveness"
 }
