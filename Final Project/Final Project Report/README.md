@@ -297,7 +297,7 @@ pip install -r requirements.txt
 
 ### Step 3: Set Your FRED API Key
 
-In the file (`IS477_RUN_Final_Project_Code.py`), locate the line:
+In the file (`IS477_Project_Code-2.py`), locate the line:
 
 ```python
 fred = Fred(api_key='YOUR_API_KEY_HERE')
@@ -307,7 +307,7 @@ Make sure to replace `'YOUR_API_KEY_HERE'` with your personal FRED API key after
 
 ### Step 4: Run the Notebook
 
-Open `IS477_RUN_Final_Project_Code.py` in Google Colab or Jupyter and run all cells in order. We uploaded the intended output in `IS477_Final_Project_Code.ipynb` for reference. The notebook is structured sequentially:
+Open `IS477_Project_Code-2.py` in Google Colab or Jupyter and run all cells in order. We uploaded the intended output in `IS477_Final_Project_Code.ipynb` for reference. The notebook is structured sequentially:
 
 1. Install fredapi
 2. Import libraries
