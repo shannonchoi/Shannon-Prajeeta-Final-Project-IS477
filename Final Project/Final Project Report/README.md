@@ -6,16 +6,6 @@ Shannon Choi
 
 ---
 
-## Project Structure
-
-IS477_RUN_Final_Project_Code.py — main script to reproduce analysis
-IS477_Final_Project_Code.ipynb — reference notebook (not required)
-RTWEXBGS.csv, EXPGS.csv — raw datasets
-merged_dataset.csv — processed dataset (generated)
-usd_vs_exports_scatter.png — visualization output
-requirements.txt — dependencies
-profile_quality.py — data profiling script
-metadata.json, data_dictionary.md — dataset documentation
 
 ## Summary
 
@@ -291,6 +281,26 @@ An important challenge was recognizing that correlating the raw (level) values o
 The biggest challenge was accepting results that contradicted our initial hypothesis. The absence of a strong two-quarter-lag negative correlation forced us to evaluate the limitations of bivariate analysis in macroeconomics. Rather than treating this as a failure, we framed it as a finding: the exchange rate pass-through mechanism at the aggregate national level is not as cleanly observable as theoretical models suggest, and confounding variables play a substantial role.
 
 ---
+
+## Project Structure
+
+IS477_RUN_Final_Project_Code.py — main script to reproduce analysis
+
+IS477_Final_Project_Code.ipynb — reference notebook (not required)
+
+RTWEXBGS.csv, EXPGS.csv — raw datasets
+
+merged_dataset.csv — processed dataset (generated)
+
+usd_vs_exports_scatter.png — visualization output
+
+requirements.txt — dependencies
+
+profile_quality.py — data profiling script
+
+metadata.json, data_dictionary.md — dataset documentation
+
+
 ## Reproducing
 
 ### Step 1: Clone the Repository
