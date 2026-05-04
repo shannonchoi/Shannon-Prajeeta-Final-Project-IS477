@@ -228,7 +228,7 @@ Both sub-periods show weak positive correlations, meaning that the moderate nega
 
 A scatter plot of USD quarterly percentage change (x-axis) versus two-quarter-lagged export percentage change (y-axis) was produced and confirmed the absence of a strong linear relationship at lag 2, consistent with the near-zero correlation at that lag.
 
-![USD vs Exports Scatter Plot](usd_vs_exports_scatter.png)
+![USD vs Exports Scatter Plot](outputs/usd_vs_exports_scatter.png)
 
 ---
 ## Future Work
