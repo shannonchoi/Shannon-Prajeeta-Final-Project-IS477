@@ -300,6 +300,23 @@ profile_quality.py — data profiling script
 
 metadata.json, data_dictionary.md — dataset documentation
 
+## Workflow Overview
+
+1. Data Acquisition
+
+   * Source: FRED or included CSV files
+   * Files: `RTWEXBGS.csv`, `EXPGS.csv`
+
+2. Data Integration & Cleaning
+
+   * Script: `IS477_RUN_Final_Project_Code.py`
+   * Output: `outputs/merged_dataset.csv`
+
+3. Analysis & Visualization
+
+   * Script: `IS477_RUN_Final_Project_Code.py`
+   * Output: `outputs/usd_vs_exports_scatter.png`
+
 
 ## Reproducing
 
