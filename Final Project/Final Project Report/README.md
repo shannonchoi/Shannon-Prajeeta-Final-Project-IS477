@@ -257,7 +257,7 @@ While our project is reproducible via a documented Colab notebook and FRED API, 
 
 ### Metadata and FAIR Compliance
 
-A future version would benefit from a formal machine-readable metadata record (Schema.org or DataCite format) and a persistent DOI to make the project fully citable as a research artifact.
+This project already includes a machine-readable metadata record in Schema.org format (metadata.json). A future version could expand this with a persistent DOI via Zenodo to make the project fully citable as a research artifact.
 
 ---
 
