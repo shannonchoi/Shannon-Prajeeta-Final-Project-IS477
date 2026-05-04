@@ -6,6 +6,17 @@ Shannon Choi
 
 ---
 
+## Project Structure
+
+IS477_RUN_Final_Project_Code.py — main script to reproduce analysis
+IS477_Final_Project_Code.ipynb — reference notebook (not required)
+RTWEXBGS.csv, EXPGS.csv — raw datasets
+merged_dataset.csv — processed dataset (generated)
+usd_vs_exports_scatter.png — visualization output
+requirements.txt — dependencies
+profile_quality.py — data profiling script
+metadata.json, data_dictionary.md — dataset documentation
+
 ## Summary
 
 This project investigates the relationship between the strength of the United States Dollar (USD) and the competitiveness of U.S. exports. Specifically, we examine whether changes in the Real Trade Weighted U.S. Dollar Index (RTWEXBGS) are associated with changes in Real Exports of Goods and Services (EXPGS), and whether any such relationship has shifted in the post-2020 economy.
