@@ -80,8 +80,8 @@ The data is a quarterly time-series. Each observation represents the total infla
 
 #### Location in Repository
 
-Shannon-Prajeeta-Final-Project-IS477 / EXPGS.csv  
-https://github.com/shannonchoi/Shannon-Prajeeta-Final-Project-IS477/blob/46fb570fb34b9b9c2d303a20405bb63c517a299e/EXPGS.csv  
+Shannon-Prajeeta-Final-Project-IS477 / Final Project / Datasets / EXPGS.csv  
+https://github.com/shannonchoi/Shannon-Prajeeta-Final-Project-IS477/blob/9084cbd746440a5a627705ca98b97fece1c1796a/Final%20Project/Datasets/EXPGS.csv
 
 #### Ethical and Legal Constraints
 
