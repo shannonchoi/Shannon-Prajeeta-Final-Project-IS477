@@ -231,6 +231,9 @@ A scatter plot of USD quarterly percentage change (x-axis) versus two-quarter-la
 
 https://github.com/shannonchoi/Shannon-Prajeeta-Final-Project-IS477/blob/57abfcb85d3297eae3867f2a0be21be94cbf9e31/Final%20Project/Artifacts/usd_vs_exports_scatter.png 
 
+<img width="1200" height="750" alt="usd_vs_exports_scatter" src="https://github.com/user-attachments/assets/79a1d786-be53-4482-9778-d83e515f2c45" />
+
+
 ---
 ## Future Work
 
