@@ -52,8 +52,8 @@ The data is a monthly time-series, with each observation representing the index 
 
 #### Location in Repository
 
-Shannon-Prajeeta-Final-Project-IS477 / RTWEXBGS.csv  
-https://github.com/shannonchoi/Shannon-Prajeeta-Final-Project-IS477/blob/46fb570fb34b9b9c2d303a20405bb63c517a299e/RTWEXBGS.csv  
+Shannon-Prajeeta-Final-Project-IS477 / Final Project / Datasets / RTWEXBGS.csv  
+https://github.com/shannonchoi/Shannon-Prajeeta-Final-Project-IS477/blob/478155394cb4824b266b9b5f68e3eacc933fa61e/Final%20Project/Datasets/RTWEXBGS.csv
 
 #### Ethical and Legal Constraints
 
