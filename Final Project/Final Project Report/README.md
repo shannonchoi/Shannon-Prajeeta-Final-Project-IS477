@@ -330,6 +330,7 @@ Final Project/
    * Script: `IS477_RUN_Final_Project_Code.py`
    * Output: `outputs/usd_vs_exports_scatter.png`
 
+`IS477_RUN_Final_Project_Code.py` serves as the project's end-to-end “Run All” workflow script, automating data acquisition, integration, cleaning, analysis, visualization, and checksum verification in a single execution pipeline.
 
 ## Reproducing
 
