@@ -287,6 +287,7 @@ The biggest challenge was accepting results that contradicted our initial hypoth
 
 ## Project Structure
 
+```text
 Final Project/
 ├── Artifacts/
 │   ├── data_dictionary.md
@@ -310,6 +311,7 @@ Final Project/
 ├── Project Plan/
 │
 └── Status Report/
+```
 
 ## Workflow Overview
 
