@@ -287,21 +287,29 @@ The biggest challenge was accepting results that contradicted our initial hypoth
 
 ## Project Structure
 
-IS477_RUN_Final_Project_Code.py — main script to reproduce analysis
-
-IS477_Final_Project_Code.ipynb — reference notebook (not required)
-
-RTWEXBGS.csv, EXPGS.csv — raw datasets
-
-merged_dataset.csv — processed dataset (generated)
-
-usd_vs_exports_scatter.png — visualization output
-
-requirements.txt — dependencies
-
-profile_quality.py — data profiling script
-
-metadata.json, data_dictionary.md — dataset documentation
+Final Project/
+├── Artifacts/
+│   ├── data_dictionary.md
+│   ├── metadata.json
+│   ├── profile_quality.py
+│   ├── requirements.txt
+│   └── usd_vs_exports_scatter.png
+│
+├── Code/
+│   ├── IS477_Final_Project_Code.ipynb
+│   └── IS477_RUN_Final_Project_Code.py
+│
+├── Datasets/
+│   ├── RTWEXBGS.csv
+│   ├── EXPGS.csv
+│   └── merged_dataset.csv
+│
+├── Final Project Report/
+│   └── README.md
+│
+├── Project Plan/
+│
+└── Status Report/
 
 ## Workflow Overview
 
