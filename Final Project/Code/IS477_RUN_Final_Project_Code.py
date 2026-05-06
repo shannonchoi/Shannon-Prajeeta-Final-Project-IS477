@@ -79,8 +79,9 @@ print(f"\nSaved merged dataset to: {csv_path}")
 # SHA-256 integrity check
 with open(csv_path, 'rb') as f:
     file_hash = hashlib.sha256(f.read()).hexdigest()
+
 print(f"  SHA-256 checksum: {file_hash}")
-print("  (Save this checksum to verify the file hasn't changed when reproducing results.)")
+print("  Use this checksum to verify the file integrity when reproducing results.")
 
 # ── 7. Analysis: Baseline Correlation ─────────────────────────────────────────
 print("\n── Baseline Correlation (lag-2 specification) ──")
@@ -90,38 +91,55 @@ print(f"  Pearson r (USD % change vs. 2Q-lagged exports % change): {baseline_cor
 # ── 8. Analysis: Lag 0–4 Correlations ─────────────────────────────────────────
 print("\n── Lag Analysis (lags 0–4 quarters) ──")
 lag_results = {}
+
 for i in range(5):
     lagged_exports = merged['EXPGS'].shift(i).pct_change()
+
     # Align index with usd_pct
     combined = pd.concat([merged['usd_pct'], lagged_exports], axis=1).dropna()
     combined.columns = ['usd_pct', f'exports_lag{i}']
+
     r = combined['usd_pct'].corr(combined[f'exports_lag{i}'])
     lag_results[i] = r
+
     print(f"  Lag {i}: r = {r:.4f}")
 
 # ── 9. Analysis: Pre- and Post-2020 ───────────────────────────────────────────
 print("\n── Pre/Post-2020 Analysis (no lag, percentage change) ──")
+
 pre_2020  = merged[merged.index < '2020Q1']
 post_2020 = merged[merged.index >= '2020Q1']
 
 pre_corr  = pre_2020['usd_pct'].corr(pre_2020['exports_pct'])
 post_corr = post_2020['usd_pct'].corr(post_2020['exports_pct'])
+
 print(f"  Pre-2020  r: {pre_corr:.4f}  ({len(pre_2020)} quarters)")
 print(f"  Post-2020 r: {post_corr:.4f}  ({len(post_2020)} quarters)")
 
 # ── 10. Visualization: Scatter Plot ───────────────────────────────────────────
 fig, ax = plt.subplots(figsize=(8, 5))
-ax.scatter(merged['usd_pct'], merged['exports_pct'], alpha=0.6, edgecolors='none')
+
+ax.scatter(
+    merged['usd_pct'],
+    merged['exports_pct'],
+    alpha=0.6,
+    edgecolors='none'
+)
+
 ax.set_xlabel('USD % Change (Quarterly)')
 ax.set_ylabel('Exports % Change (Lagged 2 Quarters)')
 ax.set_title('USD Strength vs. U.S. Exports (2-Quarter Lag)')
+
 ax.axhline(0, color='gray', linewidth=0.8, linestyle='--')
 ax.axvline(0, color='gray', linewidth=0.8, linestyle='--')
+
 plt.tight_layout()
 
 plot_path = os.path.join(OUTPUT_DIR, 'usd_vs_exports_scatter.png')
+
 plt.savefig(plot_path, dpi=150)
 plt.show()
+
 print(f"\nSaved scatter plot to: {plot_path}")
 
 print("\n── Analysis complete. All outputs saved to the 'outputs/' folder. ──")
