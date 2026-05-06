@@ -376,6 +376,23 @@ Open `IS477_RUN_Final_Project_Code.py` in Google Colab or Jupyter and run all ce
 
 Alternatively, the raw data files (`RTWEXBGS.csv` and `EXPGS.csv`) are included in this repository and can be loaded directly without an API key if you modify the acquisition cells accordingly.
 
+### Software Dependencies
+
+Required Python packages are listed in `requirements.txt`.
+
+Example environment:
+- pandas
+- matplotlib
+- fredapi
+- hashlib (standard library)
+- os (standard library)
+
+Package versions can be reproduced using:
+
+```bash
+pip install -r requirements.txt
+```
+
 ### Expected Outputs
 
 - Printed correlation coefficient for lag-2 specification
